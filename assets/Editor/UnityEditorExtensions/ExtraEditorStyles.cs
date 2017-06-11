@@ -149,6 +149,10 @@ namespace Rotorz.Games.UnityEditorExtensions
             [SerializeField]
             private Color windowBackgroundColor = Color.black;
             [SerializeField]
+            private Color separatorColor = Color.black;
+            [SerializeField]
+            private Color separatorLightColor = Color.black;
+            [SerializeField]
             private Color groupLabelColor = Color.black;
             [SerializeField]
             private Color metaLabelColor = Color.black;
@@ -166,6 +170,14 @@ namespace Rotorz.Games.UnityEditorExtensions
 
             public Color WindowBackgroundColor {
                 get { return this.windowBackgroundColor; }
+            }
+
+            public Color SeparatorColor {
+                get { return this.separatorColor; }
+            }
+
+            public Color SeparatorLightColor {
+                get { return this.separatorLightColor; }
             }
 
             public Color GroupLabelColor {

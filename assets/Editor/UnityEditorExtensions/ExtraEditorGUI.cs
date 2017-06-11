@@ -385,9 +385,6 @@ namespace Rotorz.Games.UnityEditorExtensions
 
         #region Separators
 
-        private static readonly Color SeparatorColor = EditorGUIUtility.isProSkin ? new Color(0.11f, 0.11f, 0.11f) : new Color(0.5f, 0.5f, 0.5f);
-        private static readonly Color SeparatorLightColor = EditorGUIUtility.isProSkin ? new Color(0.16f, 0.16f, 0.16f) : new Color(0.65f, 0.65f, 0.65f);
-
         private static void SeparatorHelper(int marginTop, int marginBottom, int thickness, Color color)
         {
             Rect position = GUILayoutUtility.GetRect(0, marginTop + thickness + marginBottom, None);
@@ -440,7 +437,7 @@ namespace Rotorz.Games.UnityEditorExtensions
         /// <param name="thickness">Thickness of splitter in pixels.</param>
         public static void Separator(int marginTop = 3, int marginBottom = 3, int thickness = 1)
         {
-            SeparatorHelper(marginTop, marginBottom, thickness, SeparatorColor);
+            SeparatorHelper(marginTop, marginBottom, thickness, ExtraEditorStyles.Skin.SeparatorColor);
         }
 
         /// <summary>
@@ -451,7 +448,7 @@ namespace Rotorz.Games.UnityEditorExtensions
         /// <param name="thickness">Thickness of splitter in pixels.</param>
         public static void SeparatorLight(int marginTop = 3, int marginBottom = 3, int thickness = 1)
         {
-            SeparatorHelper(marginTop, marginBottom, thickness, SeparatorLightColor);
+            SeparatorHelper(marginTop, marginBottom, thickness, ExtraEditorStyles.Skin.SeparatorLightColor);
         }
 
         /// <summary>
@@ -460,7 +457,7 @@ namespace Rotorz.Games.UnityEditorExtensions
         /// <param name="position">Position of which to draw splitter.</param>
         public static void Separator(Rect position)
         {
-            Separator(position, SeparatorColor);
+            Separator(position, ExtraEditorStyles.Skin.SeparatorColor);
         }
 
         /// <summary>
@@ -471,7 +468,7 @@ namespace Rotorz.Games.UnityEditorExtensions
         {
             if (Event.current.type == EventType.Repaint) {
                 Color restoreColor = GUI.color;
-                GUI.color = SeparatorLightColor;
+                GUI.color = ExtraEditorStyles.Skin.SeparatorLightColor;
                 ExtraEditorStyles.Instance.Separator.Draw(position, false, false, false, false);
                 GUI.color = restoreColor;
             }
