@@ -260,7 +260,7 @@ namespace Rotorz.Games.UnityEditorExtensions
 
                 case EventType.Repaint:
                     Color restoreColor = GUI.color;
-                    GUI.color = ExtraEditorStyles.Instance.Skin.LinkColor;
+                    GUI.color = ExtraEditorStyles.Skin.LinkColor;
                     style.Draw(position, text, isMouseOverControl, false, false, false);
                     GUI.color = restoreColor;
                     break;

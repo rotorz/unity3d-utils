@@ -11,8 +11,30 @@ namespace Rotorz.Games.UnityEditorExtensions
     /// </summary>
     public sealed class ExtraEditorStyles : EditorSingletonScriptableObject
     {
+        private static ExtraEditorStyles s_Instance;
+        private static SkinInfo s_Skin;
+
+
+        /// <summary>
+        /// Gets the one-and-only <see cref="ExtraEditorStyles"/> instance.
+        /// </summary>
         public static ExtraEditorStyles Instance {
-            get { return EditorSingletonUtility.GetAssetInstance<ExtraEditorStyles>(); }
+            get {
+                EditorSingletonUtility.GetAssetInstance<ExtraEditorStyles>(ref s_Instance);
+                return s_Instance;
+            }
+        }
+
+        /// <summary>
+        /// Gets the current skin.
+        /// </summary>
+        public static SkinInfo Skin {
+            get {
+                if (s_Skin == null) {
+                    s_Skin = EditorGUIUtility.isProSkin ? Instance.darkSkin : Instance.lightSkin;
+                }
+                return s_Skin;
+            }
         }
 
 
@@ -20,14 +42,6 @@ namespace Rotorz.Games.UnityEditorExtensions
         private SkinInfo darkSkin = new SkinInfo();
         [SerializeField]
         private SkinInfo lightSkin = new SkinInfo();
-
-
-        /// <summary>
-        /// Gets the current skin.
-        /// </summary>
-        public SkinInfo Skin {
-            get { return EditorGUIUtility.isProSkin ? this.darkSkin : this.lightSkin; }
-        }
 
 
         public GUIStyle BigButton { get; private set; }
@@ -86,7 +100,7 @@ namespace Rotorz.Games.UnityEditorExtensions
             this.GroupLabel = new GUIStyle();
             this.GroupLabel.fontSize = 20;
             this.GroupLabel.fontStyle = FontStyle.Normal;
-            this.GroupLabel.normal.textColor = this.Skin.GroupLabelColor;
+            this.GroupLabel.normal.textColor = Skin.GroupLabelColor;
             this.GroupLabel.margin = new RectOffset(5, 5, 6, 1);
 
             this.WhiteMetaLabel = new GUIStyle();
@@ -98,12 +112,12 @@ namespace Rotorz.Games.UnityEditorExtensions
             this.WhiteMetaLabel.richText = true;
 
             this.MetaLabel = new GUIStyle(this.WhiteMetaLabel);
-            this.MetaLabel.normal.textColor = this.Skin.MetaLabelColor;
+            this.MetaLabel.normal.textColor = Skin.MetaLabelColor;
 
             this.MetaLinkButton = new GUIStyle(this.MetaLabel);
             this.MetaLinkButton.normal.textColor = Color.white;
             this.MetaLinkButton.hover.textColor = Color.white;
-            this.MetaLinkButton.hover.background = this.Skin.UnderlineBackground;
+            this.MetaLinkButton.hover.background = Skin.UnderlineBackground;
             this.MetaLinkButton.border = new RectOffset(0, 0, 1, 1);
             this.MetaLinkButton.fixedHeight = 14;
             this.MetaLinkButton.richText = true;

@@ -29,8 +29,8 @@ namespace Rotorz.Games.UnityEditorExtensions
                 return;
             }
 
-            this.OnInitialize();
             this.HasInitialized = true;
+            this.OnInitialize();
         }
     }
 }
