@@ -134,58 +134,6 @@ namespace Rotorz.Games.UnityEditorExtensions
         #endregion
 
 
-        #region Big Buttons
-
-        /// <inheritdoc cref="BigButton(string)"/>
-        /// <param name="options">
-        /// An optional list of layout options that specify extra layouting properties.
-        /// Any values passed in here will override settings defined by the style.
-        /// <para>See: <a href="http://docs.unity3d.com/Documentation/ScriptReference/GUILayout.html">http://docs.unity3d.com/Documentation/ScriptReference/GUILayout.html</a></para>
-        /// </param>
-        public static bool BigButton(string label, params GUILayoutOption[] options)
-        {
-            return GUILayout.Button(label, ExtraEditorStyles.Instance.BigButton, options);
-        }
-
-        /// <summary>
-        /// Output big style button.
-        /// </summary>
-        /// <param name="label">Label text for button.</param>
-        /// <returns>
-        /// A value of <c>true</c> indicates that button was pressed.
-        /// </returns>
-        public static bool BigButton(string label)
-        {
-            return BigButton(label, None);
-        }
-
-
-        /// <inheritdoc cref="BigButtonPadded(string)"/>
-        /// <param name="options">
-        /// An optional list of layout options that specify extra layouting properties.
-        /// Any values passed in here will override settings defined by the style.
-        /// <para>See: <a href="http://docs.unity3d.com/Documentation/ScriptReference/GUILayout.html">http://docs.unity3d.com/Documentation/ScriptReference/GUILayout.html</a></para>
-        /// </param>
-        public static bool BigButtonPadded(string label, params GUILayoutOption[] options)
-        {
-            return GUILayout.Button(label, ExtraEditorStyles.Instance.BigButtonExtraPadded, options);
-        }
-
-        /// <summary>
-        /// Output big style button with extra padding.
-        /// </summary>
-        /// <param name="label">Label text for button.</param>
-        /// <returns>
-        /// A value of <c>true</c> indicates that button was pressed.
-        /// </returns>
-        public static bool BigButtonPadded(string label)
-        {
-            return BigButtonPadded(label, None);
-        }
-
-        #endregion
-
-
         #region Labels
 
         /// <summary>

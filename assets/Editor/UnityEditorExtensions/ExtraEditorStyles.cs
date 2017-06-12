@@ -47,7 +47,7 @@ namespace Rotorz.Games.UnityEditorExtensions
         public GUIStyle BigButton { get; private set; }
         public GUIStyle BigButtonLeftAligned { get; private set; }
         public GUIStyle BigButtonRightAligned { get; private set; }
-        public GUIStyle BigButtonExtraPadded { get; private set; }
+        public GUIStyle BigButtonPadded { get; private set; }
 
         public GUIStyle WhiteWordWrappedMiniLabel { get; private set; }
         public GUIStyle BoldLabel { get; private set; }
@@ -84,9 +84,9 @@ namespace Rotorz.Games.UnityEditorExtensions
             this.BigButtonRightAligned = new GUIStyle(this.BigButton);
             this.BigButtonRightAligned.alignment = TextAnchor.MiddleRight;
 
-            this.BigButtonExtraPadded = new GUIStyle(this.BigButton);
-            this.BigButtonExtraPadded.padding.left = 34;
-            this.BigButtonExtraPadded.padding.right = 35;
+            this.BigButtonPadded = new GUIStyle(this.BigButton);
+            this.BigButtonPadded.padding.left = 34;
+            this.BigButtonPadded.padding.right = 35;
 
             this.WhiteWordWrappedMiniLabel = new GUIStyle(EditorStyles.whiteMiniLabel);
             this.WhiteWordWrappedMiniLabel.wordWrap = true;
