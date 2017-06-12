@@ -604,6 +604,35 @@ namespace Rotorz.Games.UnityEditorExtensions
         #endregion
 
 
+        #region Input Handling
+
+        /// <summary>
+        /// Test for "Return" key-down event; this is useful for accepting input.
+        /// </summary>
+        /// <example>
+        /// <code language="csharp"><![CDATA[
+        /// if (ExtraEditorGUI.AcceptKeyboardReturn()) {
+        ///     this.DoSomething();
+        /// }
+        /// ]]></code>
+        /// </example>
+        /// <returns>
+        /// A value of <c>true</c> if return key was used to accept user input; otherwise,
+        /// a value of <c>false</c>.
+        /// </returns>
+        public static bool AcceptKeyboardReturn()
+        {
+            if (Event.current.rawType == EventType.KeyDown && Event.current.keyCode == KeyCode.Return) {
+                GUIUtility.keyboardControl = 0;
+                Event.current.Use();
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
+
+
         #region Metrics
 
         /// <summary>
