@@ -18,7 +18,9 @@ namespace Rotorz.Games.UnityEditorExtensions
         /// <typeparam name="T">Implementation type.</typeparam>
         /// <param name="instance">Reference for the one-and-only shared instance of the
         /// specified implementation type.</param>
-        public static void GetAssetInstance<T>(ref T instance)
+        /// <param name="reinitializeOnReload">Indicates if singleton should be
+        /// initialized again when Unity reloads it's assemblies.</param>
+        public static void GetAssetInstance<T>(ref T instance, bool reinitializeOnReload = true)
             where T : EditorSingletonScriptableObject
         {
             if (instance == null) {
@@ -26,6 +28,9 @@ namespace Rotorz.Games.UnityEditorExtensions
                 if (!string.IsNullOrEmpty(assetGuid)) {
                     string assetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
                     instance = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+                    if (reinitializeOnReload && instance.HasInitialized) {
+                        instance.Reinitialize();
+                    }
                 }
             }
 

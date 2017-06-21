@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Rotorz Limited. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root.
 
+using System;
 using UnityEngine;
 
 namespace Rotorz.Games.UnityEditorExtensions
@@ -26,9 +27,18 @@ namespace Rotorz.Games.UnityEditorExtensions
         public void Initialize()
         {
             if (this.HasInitialized) {
-                return;
+                throw new InvalidOperationException("Already initialized!");
             }
 
+            this.HasInitialized = true;
+            this.OnInitialize();
+        }
+
+        /// <summary>
+        /// Reinitializes the singleton.
+        /// </summary>
+        public void Reinitialize()
+        {
             this.HasInitialized = true;
             this.OnInitialize();
         }
