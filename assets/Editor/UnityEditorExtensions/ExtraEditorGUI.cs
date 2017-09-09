@@ -53,87 +53,6 @@ namespace Rotorz.Games.UnityEditorExtensions
         #endregion
 
 
-        #region Temporary Content
-
-        private static GUIContent s_TempContent = new GUIContent();
-        private static GUIContent s_TempText = new GUIContent();
-        private static GUIContent s_TempTextTooltip = new GUIContent();
-        private static GUIContent s_TempImage = new GUIContent();
-        private static GUIContent s_TempImageText = new GUIContent();
-        private static GUIContent s_TempImageTooltip = new GUIContent();
-
-        /// <summary>
-        /// Gets temporary content for immediate use within GUI.
-        /// </summary>
-        /// <remarks>
-        /// <para>Helps to avoid memory allocations each time custom graphical
-        /// user interface events are processed.</para>
-        /// </remarks>
-        /// <example>
-        /// <para>Usage example:</para>
-        /// <code language="csharp"><![CDATA[
-        /// private static void SomeCustomControl(GUIContent content)
-        /// {
-        ///     // Custom control implementation.
-        /// }
-        ///
-        /// private void OnGUI()
-        /// {
-        ///     SomeCustomControl(TempContent("Test text..."));
-        /// }
-        /// ]]></code>
-        /// </example>
-        /// <param name="text">Text for content.</param>
-        /// <param name="image">Texture for image or icon.</param>
-        /// <param name="tooltip">Tooltip text.</param>
-        /// <returns>
-        /// The shared <see cref="GUIContent"/> instance.
-        /// </returns>
-        public static GUIContent TempContent(string text, Texture2D image, string tooltip)
-        {
-            s_TempContent.text = text;
-            s_TempContent.tooltip = tooltip;
-            s_TempContent.image = image;
-            return s_TempContent;
-        }
-
-        /// <inheritdoc cref="TempContent(string, Texture2D, string)"/>
-        public static GUIContent TempContent(string text)
-        {
-            s_TempText.text = text;
-            return s_TempText;
-        }
-        /// <inheritdoc cref="TempContent(string, Texture2D, string)"/>
-        public static GUIContent TempContent(string text, string tooltip)
-        {
-            s_TempTextTooltip.text = text;
-            s_TempTextTooltip.tooltip = tooltip;
-            return s_TempTextTooltip;
-        }
-        /// <inheritdoc cref="TempContent(string, Texture2D, string)"/>
-        public static GUIContent TempContent(Texture2D image)
-        {
-            s_TempImage.image = image;
-            return s_TempImage;
-        }
-        /// <inheritdoc cref="TempContent(string, Texture2D, string)"/>
-        public static GUIContent TempContent(Texture2D image, string tooltip)
-        {
-            s_TempImageTooltip.tooltip = tooltip;
-            s_TempImageTooltip.image = image;
-            return s_TempImageTooltip;
-        }
-        /// <inheritdoc cref="TempContent(string, Texture2D, string)"/>
-        public static GUIContent TempContent(string text, Texture2D image)
-        {
-            s_TempImageText.text = text;
-            s_TempImageText.image = image;
-            return s_TempImageText;
-        }
-
-        #endregion
-
-
         #region Labels
 
         /// <summary>
@@ -265,9 +184,10 @@ namespace Rotorz.Games.UnityEditorExtensions
                 case EventType.Repaint:
                     if (visible) {
                         bool isActive = GUIUtility.hotControl == controlID && position.Contains(Event.current.mousePosition);
-                        var content = TempContent(isActive ? iconActive : iconNormal);
-                        position.height -= 1;
-                        style.Draw(position, content, isActive, isActive, false, false);
+                        using (var tempContent = ControlContent.Basic(isActive ? iconActive : iconNormal)) {
+                            position.height -= 1;
+                            style.Draw(position, tempContent, isActive, isActive, false, false);
+                        }
                     }
                     break;
             }
@@ -292,10 +212,10 @@ namespace Rotorz.Games.UnityEditorExtensions
         /// <param name="style">Style for prefix label.</param>
         public static void AbovePrefixLabel(string text, GUIStyle style)
         {
-            var label = TempContent(text);
-            Rect position = GUILayoutUtility.GetRect(label, style);
-
-            EditorGUI.HandlePrefixLabel(position, position, label, 0, style);
+            using (var labelContent = ControlContent.Basic(text)) {
+                Rect position = GUILayoutUtility.GetRect(labelContent, style);
+                EditorGUI.HandlePrefixLabel(position, position, labelContent, 0, style);
+            }
         }
 
         /// <summary>
@@ -446,7 +366,9 @@ namespace Rotorz.Games.UnityEditorExtensions
 
         public static void ToggleLeft(Rect position, SerializedProperty prop, string label)
         {
-            ToggleLeft(position, prop, TempContent(label));
+            using (var labelContent = ControlContent.Basic(label)) {
+                ToggleLeft(position, prop, labelContent);
+            }
         }
 
         public static void ToggleLeft(SerializedProperty prop, GUIContent label)
@@ -457,7 +379,9 @@ namespace Rotorz.Games.UnityEditorExtensions
 
         public static void ToggleLeft(SerializedProperty prop, string label)
         {
-            ToggleLeft(prop, TempContent(label));
+            using (var labelContent = ControlContent.Basic(label)) {
+                ToggleLeft(prop, labelContent);
+            }
         }
 
         #endregion
@@ -545,7 +469,7 @@ namespace Rotorz.Games.UnityEditorExtensions
 
         public static void TrailingTip(ControlContent content)
         {
-            TrailingTip(content.TipText);
+            TrailingTip(content.TrailingTipText);
         }
 
         #endregion
