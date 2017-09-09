@@ -527,6 +527,30 @@ namespace Rotorz.Games.UnityEditorExtensions
         #endregion
 
 
+        #region Trailing Tips
+
+        public static void TrailingTip(string tipText)
+        {
+            if (string.IsNullOrEmpty(tipText)) {
+                return;
+            }
+
+            using (var labelContent = ControlContent.Basic(tipText)) {
+                Rect position = GUILayoutUtility.GetRect(labelContent, ExtraEditorStyles.Instance.TrailingTip);
+                position.y -= 2;
+
+                EditorGUI.LabelField(position, labelContent, ExtraEditorStyles.Instance.TrailingTip);
+            }
+        }
+
+        public static void TrailingTip(ControlContent content)
+        {
+            TrailingTip(content.TipText);
+        }
+
+        #endregion
+
+
         #region Texture Drawing
 
         private static GUIStyle s_DrawTextureTempStyle = new GUIStyle();

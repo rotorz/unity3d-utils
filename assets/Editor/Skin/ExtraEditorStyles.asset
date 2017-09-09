@@ -20,6 +20,8 @@ MonoBehaviour:
     linkColor: {r: 0.89411765, g: 1, b: 0, a: 1}
     selectedHighlightColor: {r: 0.23921569, g: 0.5019608, b: 0.8745098, a: 1}
     selectedHighlightStrongColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+    texTrailingTipBackground: {fileID: 2800000, guid: 977519d8d10188a40aaa10ce2428793a,
+      type: 3}
     underlineBackground: {fileID: 2800000, guid: 6e64644c351cbd74b836d58939eca055,
       type: 3}
   lightSkin:
@@ -31,5 +33,7 @@ MonoBehaviour:
     linkColor: {r: 0, g: 0.5411765, b: 1, a: 1}
     selectedHighlightColor: {r: 0.23921569, g: 0.5019608, b: 0.8745098, a: 1}
     selectedHighlightStrongColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+    texTrailingTipBackground: {fileID: 2800000, guid: eb83234ffb5b22742953bb99b1d56ffa,
+      type: 3}
     underlineBackground: {fileID: 2800000, guid: 6e64644c351cbd74b836d58939eca055,
       type: 3}

@@ -67,6 +67,8 @@ namespace Rotorz.Games.UnityEditorExtensions
 
         public GUIStyle Separator { get; private set; }
 
+        public GUIStyle TrailingTip { get; private set; }
+
 
         /// <inheritdoc/>
         protected override void OnInitialize()
@@ -140,6 +142,16 @@ namespace Rotorz.Games.UnityEditorExtensions
             this.Separator = new GUIStyle();
             this.Separator.normal.background = EditorGUIUtility.whiteTexture;
             this.Separator.stretchWidth = true;
+
+            this.TrailingTip = new GUIStyle();
+            this.TrailingTip.margin = new RectOffset(2, 2, 0, 0);
+            this.TrailingTip.padding = new RectOffset(6, 6, 9, 6);
+            this.TrailingTip.border = new RectOffset(32, 4, 8, 4);
+            this.TrailingTip.wordWrap = true;
+            this.TrailingTip.normal.background = Skin.TrailingTipBackground;
+            this.TrailingTip.normal.textColor = EditorGUIUtility.isProSkin
+                ? new Color32(140, 140, 140, 255)
+                : new Color32(59, 59, 59, 255);
         }
 
 
@@ -164,6 +176,8 @@ namespace Rotorz.Games.UnityEditorExtensions
             private Color selectedHighlightStrongColor = Color.black;
 
 
+            [SerializeField]
+            private Texture2D texTrailingTipBackground = null;
             [SerializeField]
             private Texture2D underlineBackground = null;
 
@@ -200,6 +214,10 @@ namespace Rotorz.Games.UnityEditorExtensions
                 get { return this.selectedHighlightStrongColor; }
             }
 
+
+            public Texture2D TrailingTipBackground {
+                get { return this.texTrailingTipBackground; }
+            }
 
             public Texture2D UnderlineBackground {
                 get { return this.underlineBackground; }
