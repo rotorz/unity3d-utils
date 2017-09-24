@@ -1,13 +1,9 @@
 # unity3d-utils
 
-[![npm version](https://badge.fury.io/js/%40rotorz%2Funity3d-utils.svg)](https://badge.fury.io/js/%40rotorz%2Funity3d-utils)
-[![Dependency Status](https://david-dm.org/rotorz/unity3d-utils.svg)](https://david-dm.org/rotorz/unity3d-utils)
-[![devDependency Status](https://david-dm.org/rotorz/unity3d-utils/dev-status.svg)](https://david-dm.org/rotorz/unity3d-utils#info=devDependencies)
-
 Common utility functionality for Unity game projects.
 
 ```sh
-$ npm install --save @rotorz/unity3d-utils
+$ npm install --save rotorz/unity3d-utils
 ```
 
 This package is compatible with [unity3d-package-syncer](https://github.com/rotorz/unity3d-package-syncer).
