@@ -1,6 +1,6 @@
 {
   "name": "@rotorz/unity3d-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common utility functionality for Unity game projects.",
   "main": "index.js",
   "scripts": {
