@@ -17,6 +17,6 @@
     "unity3d-package"
   ],
   "dependencies": {
-    "@rotorz/dotnet-exception-utils": "github:rotorz/dotnet-exception-utils#semver:^1.0.0"
+    "@rotorz/dotnet-exception-utils": "github:rotorz/dotnet-exception-utils#semver:^1.0.3"
   }
 }

@@ -1,0 +1,7 @@
+{
+    "name": "rotorz.unity3d-utils.editor",
+    "references": [
+        "rotorz.unity3d-utils",
+        "rotorz.dotnet-exception-utils"
+    ]
+}
